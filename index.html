@@ -42,25 +42,13 @@
       margin-top: 4px;
     }
     #pv-counter {
-      margin-top: 6px;
+      margin-top: 8px;
       display: flex;
-      align-items: center;
       justify-content: center;
-      gap: 12px;
-      font-size: 0.72rem;
-      opacity: 0.9;
     }
-    #pv-counter .pv-item {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    #pv-counter .pv-label {
-      opacity: 0.8;
-    }
-    #pv-counter .pv-value {
-      font-weight: 700;
-      font-size: 0.85rem;
+    #pv-counter img {
+      height: 20px;
+      border-radius: 4px;
     }
     #filter-bar {
       padding: 10px 12px;
@@ -188,15 +176,7 @@
   <h1><span>🦑</span> ホタルイカ身投げ・掬い情報</h1>
   <div id="last-updated">読み込み中...</div>
   <div id="pv-counter">
-    <div class="pv-item">
-      <span class="pv-label">👁 本日</span>
-      <span class="pv-value" id="pv-today">-</span>
-    </div>
-    <span style="opacity:0.4">|</span>
-    <div class="pv-item">
-      <span class="pv-label">累計</span>
-      <span class="pv-value" id="pv-total">-</span>
-    </div>
+    <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fafghani420.github.io%2Fhotaruika-watch%2F&count_bg=%2300c2e0&title_bg=%231a6eb5&icon=eye.svg&icon_color=%23ffffff&title=%E6%9C%AC%E6%97%A5%2F%E7%B4%AF%E8%A8%88&edge_flat=true" alt="ページビュー" />
   </div>
 </header>
 
@@ -319,22 +299,6 @@
 
   loadData();
 
-  // ページビューカウンター（hits.seeyoufarm.com）
-  // カウントを記録しつつ today / total を取得
-  async function loadPageViews() {
-    const siteUrl = encodeURIComponent('https://afghani420.github.io/hotaruika-watch/');
-    const apiUrl = `https://hits.seeyoufarm.com/api/count/incr/badge.json?url=${siteUrl}`;
-    try {
-      const res = await fetch(apiUrl);
-      const data = await res.json();
-      document.getElementById('pv-today').textContent = Number(data.today).toLocaleString();
-      document.getElementById('pv-total').textContent = Number(data.total).toLocaleString();
-    } catch (e) {
-      document.getElementById('pv-today').textContent = '--';
-      document.getElementById('pv-total').textContent = '--';
-    }
-  }
-  loadPageViews();
 </script>
 </body>
 </html>
