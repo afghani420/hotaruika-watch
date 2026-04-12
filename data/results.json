@@ -1,5 +1,15 @@
 [
   {
+    "id": "f651667d7f13",
+    "title": "ホタルイカ爆湧き予報",
+    "url": "https://bakuwaki.jp/",
+    "summary": "富山湾のホタルイカ身投げをAIで予測し、掬いのタイミングを週間予報で提供。掲示板でリアルタイム情報交換ができる観光客向けサービス。",
+    "location": "富山湾",
+    "published_at": null,
+    "thumbnail": "https://bakuwaki.jp/opengraph-image?119c0cf424762bcb",
+    "fetched_at": "2026-04-13 04:55 JST"
+  },
+  {
     "id": "63e4f0faf26f",
     "title": "体験レポート付きホタルイカ身投げ＆ほたるいかすくい完全ガイド",
     "url": "https://shibata-ya.net/hotaruika-report/",
