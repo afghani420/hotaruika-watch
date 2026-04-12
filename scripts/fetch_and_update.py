@@ -20,6 +20,7 @@ logger = logging.getLogger(__name__)
 
 SERPER_API_KEY = os.environ["SERPER_API_KEY"]
 ANTHROPIC_API_KEY = os.environ["ANTHROPIC_API_KEY"]
+YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", "")
 
 JST = timezone(timedelta(hours=9))
 DATA_FILE = Path(__file__).parent.parent / "data" / "results.json"
@@ -32,6 +33,42 @@ SEARCH_QUERIES = [
 ]
 
 EXCLUDE_KEYWORDS = ["水揚げ", "漁獲量", "競り", "競売", "プロ漁師", "kg", "トン", "卸売"]
+
+
+def extract_youtube_id(url: str) -> str | None:
+    """YouTube URLから動画IDを抽出する"""
+    import re
+    patterns = [
+        r"youtube\.com/watch\?.*v=([A-Za-z0-9_-]{11})",
+        r"youtu\.be/([A-Za-z0-9_-]{11})",
+        r"youtube\.com/shorts/([A-Za-z0-9_-]{11})",
+    ]
+    for pat in patterns:
+        m = re.search(pat, url)
+        if m:
+            return m.group(1)
+    return None
+
+
+def fetch_youtube_published_at(video_id: str) -> str | None:
+    """YouTube Data API v3 で公開日時を取得（YYYY-MM-DD形式で返す）"""
+    if not YOUTUBE_API_KEY:
+        return None
+    try:
+        resp = requests.get(
+            "https://www.googleapis.com/youtube/v3/videos",
+            params={"id": video_id, "part": "snippet", "key": YOUTUBE_API_KEY},
+            timeout=10,
+        )
+        resp.raise_for_status()
+        items = resp.json().get("items", [])
+        if not items:
+            return None
+        published = items[0]["snippet"]["publishedAt"]  # e.g. "2026-04-10T03:22:00Z"
+        return published[:10]  # YYYY-MM-DD
+    except Exception as e:
+        logger.warning(f"YouTube API エラー [{video_id}]: {e}")
+        return None
 
 
 def search_serper(query: str) -> list[dict]:
@@ -176,13 +213,22 @@ def main():
 
             thumbnail = fetch_ogp_image(url)
 
+            # YouTube URLなら API から正確な公開日を取得
+            published_at = analysis.get("published_at")
+            yt_id = extract_youtube_id(url)
+            if yt_id:
+                yt_date = fetch_youtube_published_at(yt_id)
+                if yt_date:
+                    published_at = yt_date
+                    logger.info(f"  YouTube公開日取得: {yt_date}")
+
             item = {
                 "id": make_id(url),
                 "title": title,
                 "url": url,
                 "summary": analysis.get("summary", ""),
                 "location": analysis.get("location", ""),
-                "published_at": analysis.get("published_at"),
+                "published_at": published_at,
                 "thumbnail": thumbnail,
                 "fetched_at": datetime.now(JST).strftime("%Y-%m-%d %H:%M JST"),
             }
