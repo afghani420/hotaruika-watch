@@ -1,1 +1,302 @@
-{}
+{
+  "generated_at": "2026-04-12 21:25 JST",
+  "location": "富山県滑川市（ホタルイカミュージアム周辺）",
+  "note": "満潮・干潮は伏木港基準の近似値（±1〜2時間の誤差あり）",
+  "days": [
+    {
+      "date": "2026-04-12",
+      "weekday": "日",
+      "weather_icon": "⛅",
+      "weather": "薄曇り",
+      "temp_max": 14,
+      "temp_min": 8,
+      "precip": 0.0,
+      "moon_age": 24.5,
+      "moon_icon": "🌘",
+      "tide_type": "中潮",
+      "tide_times": [
+        {
+          "type": "満潮",
+          "time": "04:05"
+        },
+        {
+          "type": "干潮",
+          "time": "10:17"
+        },
+        {
+          "type": "満潮",
+          "time": "16:29"
+        },
+        {
+          "type": "干潮",
+          "time": "22:41"
+        }
+      ],
+      "morning_hw": [
+        {
+          "type": "満潮",
+          "time": "04:05"
+        }
+      ],
+      "watch_score": 3
+    },
+    {
+      "date": "2026-04-13",
+      "weekday": "月",
+      "weather_icon": "⛅",
+      "weather": "薄曇り",
+      "temp_max": 19,
+      "temp_min": 6,
+      "precip": 0.0,
+      "moon_age": 25.5,
+      "moon_icon": "🌘",
+      "tide_type": "中潮",
+      "tide_times": [
+        {
+          "type": "満潮",
+          "time": "04:53"
+        },
+        {
+          "type": "干潮",
+          "time": "11:04"
+        },
+        {
+          "type": "干潮",
+          "time": "11:05"
+        },
+        {
+          "type": "満潮",
+          "time": "17:16"
+        },
+        {
+          "type": "干潮",
+          "time": "23:27"
+        },
+        {
+          "type": "干潮",
+          "time": "23:28"
+        }
+      ],
+      "morning_hw": [
+        {
+          "type": "満潮",
+          "time": "04:53"
+        }
+      ],
+      "watch_score": 3
+    },
+    {
+      "date": "2026-04-14",
+      "weekday": "火",
+      "weather_icon": "⛅",
+      "weather": "薄曇り",
+      "temp_max": 14,
+      "temp_min": 9,
+      "precip": 0.0,
+      "moon_age": 26.5,
+      "moon_icon": "🌘",
+      "tide_type": "中潮",
+      "tide_times": [
+        {
+          "type": "満潮",
+          "time": "05:39"
+        },
+        {
+          "type": "干潮",
+          "time": "11:50"
+        },
+        {
+          "type": "干潮",
+          "time": "11:51"
+        },
+        {
+          "type": "満潮",
+          "time": "18:02"
+        }
+      ],
+      "morning_hw": [
+        {
+          "type": "満潮",
+          "time": "05:39"
+        }
+      ],
+      "watch_score": 3
+    },
+    {
+      "date": "2026-04-15",
+      "weekday": "水",
+      "weather_icon": "🌧",
+      "weather": "雨",
+      "temp_max": 13,
+      "temp_min": 10,
+      "precip": 37.3,
+      "moon_age": 27.5,
+      "moon_icon": "🌘",
+      "tide_type": "中潮",
+      "tide_times": [
+        {
+          "type": "干潮",
+          "time": "00:13"
+        },
+        {
+          "type": "満潮",
+          "time": "06:25"
+        },
+        {
+          "type": "干潮",
+          "time": "12:36"
+        },
+        {
+          "type": "干潮",
+          "time": "12:37"
+        },
+        {
+          "type": "満潮",
+          "time": "18:48"
+        }
+      ],
+      "morning_hw": [],
+      "watch_score": 1
+    },
+    {
+      "date": "2026-04-16",
+      "weekday": "木",
+      "weather_icon": "🌦",
+      "weather": "霧雨",
+      "temp_max": 16,
+      "temp_min": 10,
+      "precip": 1.3,
+      "moon_age": 28.5,
+      "moon_icon": "🌘",
+      "tide_type": "大潮",
+      "tide_times": [
+        {
+          "type": "干潮",
+          "time": "00:59"
+        },
+        {
+          "type": "満潮",
+          "time": "07:11"
+        },
+        {
+          "type": "干潮",
+          "time": "13:23"
+        },
+        {
+          "type": "満潮",
+          "time": "19:35"
+        }
+      ],
+      "morning_hw": [],
+      "watch_score": 1
+    },
+    {
+      "date": "2026-04-17",
+      "weekday": "金",
+      "weather_icon": "☁️",
+      "weather": "曇り",
+      "temp_max": 22,
+      "temp_min": 9,
+      "precip": 0.0,
+      "moon_age": 29.5,
+      "moon_icon": "🌘",
+      "tide_type": "大潮",
+      "tide_times": [
+        {
+          "type": "干潮",
+          "time": "01:47"
+        },
+        {
+          "type": "満潮",
+          "time": "07:59"
+        },
+        {
+          "type": "干潮",
+          "time": "14:11"
+        },
+        {
+          "type": "干潮",
+          "time": "14:13"
+        },
+        {
+          "type": "満潮",
+          "time": "20:25"
+        }
+      ],
+      "morning_hw": [],
+      "watch_score": 1
+    },
+    {
+      "date": "2026-04-18",
+      "weekday": "土",
+      "weather_icon": "☁️",
+      "weather": "曇り",
+      "temp_max": 23,
+      "temp_min": 13,
+      "precip": 0.0,
+      "moon_age": 0.9,
+      "moon_icon": "🌑",
+      "tide_type": "大潮",
+      "tide_times": [
+        {
+          "type": "干潮",
+          "time": "02:39"
+        },
+        {
+          "type": "満潮",
+          "time": "08:51"
+        },
+        {
+          "type": "干潮",
+          "time": "15:03"
+        },
+        {
+          "type": "干潮",
+          "time": "15:06"
+        },
+        {
+          "type": "満潮",
+          "time": "21:18"
+        }
+      ],
+      "morning_hw": [],
+      "watch_score": 1
+    },
+    {
+      "date": "2026-04-19",
+      "weekday": "日",
+      "weather_icon": "☁️",
+      "weather": "曇り",
+      "temp_max": 20,
+      "temp_min": 11,
+      "precip": 0.0,
+      "moon_age": 1.9,
+      "moon_icon": "🌒",
+      "tide_type": "中潮",
+      "tide_times": [
+        {
+          "type": "干潮",
+          "time": "03:35"
+        },
+        {
+          "type": "満潮",
+          "time": "09:47"
+        },
+        {
+          "type": "干潮",
+          "time": "15:59"
+        },
+        {
+          "type": "干潮",
+          "time": "16:05"
+        },
+        {
+          "type": "満潮",
+          "time": "22:17"
+        }
+      ],
+      "morning_hw": [],
+      "watch_score": 1
+    }
+  ]
+}
