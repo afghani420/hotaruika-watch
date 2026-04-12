@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ホタルイカ身投げ・掬い情報掲示板</title>
+  <style>
+    :root {
+      --primary: #1a6eb5;
+      --accent: #00c2e0;
+      --bg: #f0f6ff;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --muted: #6b7a99;
+      --tag-bg: #e0f0ff;
+      --tag-color: #1a6eb5;
+      --border: #d0e4f7;
+      --shadow: 0 2px 12px rgba(26,110,181,0.10);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: white;
+      padding: 18px 16px 14px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    header h1 { font-size: 1.2rem; font-weight: 700; letter-spacing: 0.03em; }
+    header h1 span { font-size: 1.5rem; }
+    #last-updated {
+      font-size: 0.72rem;
+      opacity: 0.85;
+      margin-top: 4px;
+    }
+    #filter-bar {
+      padding: 10px 12px;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    #filter-bar::-webkit-scrollbar { display: none; }
+    .filter-btn {
+      flex-shrink: 0;
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 1.5px solid var(--border);
+      background: white;
+      color: var(--muted);
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    #cards {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,110,181,0.15); }
+    .card-thumb {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      background: linear-gradient(135deg, #c8e6ff 0%, #e0f7fa 100%);
+    }
+    .card-thumb-placeholder {
+      width: 100%;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      background: linear-gradient(135deg, #c8e6ff 0%, #e0f7fa 100%);
+    }
+    .card-body { padding: 12px 14px 14px; }
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.45;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .location-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--tag-bg);
+      color: var(--tag-color);
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.76rem;
+      font-weight: 600;
+    }
+    .card-date { font-size: 0.72rem; color: var(--muted); }
+    .card-summary {
+      font-size: 0.85rem;
+      color: #333;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    .card-link {
+      display: inline-block;
+      color: var(--primary);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1.5px solid var(--primary);
+      border-radius: 8px;
+      padding: 4px 14px;
+      transition: all 0.2s;
+    }
+    .card-link:hover { background: var(--primary); color: white; }
+    #empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+    #empty .emoji { font-size: 3rem; margin-bottom: 12px; }
+    footer {
+      text-align: center;
+      padding: 24px 16px;
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1><span>🦑</span> ホタルイカ身投げ・掬い情報</h1>
+  <div id="last-updated">読み込み中...</div>
+</header>
+
+<div id="filter-bar">
+  <button class="filter-btn active" data-location="">すべて</button>
+</div>
+
+<div id="cards"></div>
+<div id="empty" style="display:none">
+  <div class="emoji">🦑</div>
+  <div>該当する情報がありません</div>
+</div>
+
+<footer>自動収集による情報です。最新情報は各リンク先でご確認ください。</footer>
+
+<script>
+  let allItems = [];
+  let activeLocation = '';
+
+  async function loadData() {
+    try {
+      const res = await fetch('data/results.json?t=' + Date.now());
+      allItems = await res.json();
+    } catch (e) {
+      allItems = [];
+    }
+    renderFilterButtons();
+    renderCards();
+    updateLastUpdated();
+  }
+
+  function updateLastUpdated() {
+    const el = document.getElementById('last-updated');
+    if (allItems.length === 0) {
+      el.textContent = 'データなし';
+      return;
+    }
+    const latest = allItems[0]?.fetched_at || '';
+    el.textContent = latest ? `最終更新: ${latest}` : '';
+  }
+
+  function getLocations() {
+    const locs = new Set();
+    allItems.forEach(item => { if (item.location) locs.add(item.location); });
+    return [...locs].slice(0, 12);
+  }
+
+  function renderFilterButtons() {
+    const bar = document.getElementById('filter-bar');
+    bar.innerHTML = '';
+    const allBtn = document.createElement('button');
+    allBtn.className = 'filter-btn' + (activeLocation === '' ? ' active' : '');
+    allBtn.dataset.location = '';
+    allBtn.textContent = 'すべて';
+    allBtn.onclick = () => setFilter('');
+    bar.appendChild(allBtn);
+
+    getLocations().forEach(loc => {
+      const btn = document.createElement('button');
+      btn.className = 'filter-btn' + (activeLocation === loc ? ' active' : '');
+      btn.dataset.location = loc;
+      btn.textContent = '📍 ' + loc;
+      btn.onclick = () => setFilter(loc);
+      bar.appendChild(btn);
+    });
+  }
+
+  function setFilter(loc) {
+    activeLocation = loc;
+    renderFilterButtons();
+    renderCards();
+  }
+
+  function renderCards() {
+    const container = document.getElementById('cards');
+    const empty = document.getElementById('empty');
+    const items = activeLocation
+      ? allItems.filter(i => i.location === activeLocation)
+      : allItems;
+
+    container.innerHTML = '';
+    if (items.length === 0) {
+      empty.style.display = 'block';
+      return;
+    }
+    empty.style.display = 'none';
+
+    items.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      const thumbHtml = item.thumbnail
+        ? `<img class="card-thumb" src="${escHtml(item.thumbnail)}" alt="" loading="lazy" onerror="this.style.display='none'">`
+        : `<div class="card-thumb-placeholder">🦑</div>`;
+
+      const locHtml = item.location
+        ? `<span class="location-tag">📍 ${escHtml(item.location)}</span>`
+        : '';
+
+      card.innerHTML = `
+        ${thumbHtml}
+        <div class="card-body">
+          <div class="card-title">${escHtml(item.title)}</div>
+          <div class="card-meta">
+            ${locHtml}
+            <span class="card-date">🕐 ${escHtml(item.fetched_at || '')}</span>
+          </div>
+          <div class="card-summary">${escHtml(item.summary)}</div>
+          <a class="card-link" href="${escHtml(item.url)}" target="_blank" rel="noopener">記事を見る →</a>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  function escHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  loadData();
+</script>
+</body>
+</html>
