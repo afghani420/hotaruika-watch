@@ -41,6 +41,27 @@
       opacity: 0.85;
       margin-top: 4px;
     }
+    #pv-counter {
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: 0.72rem;
+      opacity: 0.9;
+    }
+    #pv-counter .pv-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    #pv-counter .pv-label {
+      opacity: 0.8;
+    }
+    #pv-counter .pv-value {
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
     #filter-bar {
       padding: 10px 12px;
       background: white;
@@ -166,6 +187,17 @@
 <header>
   <h1><span>🦑</span> ホタルイカ身投げ・掬い情報</h1>
   <div id="last-updated">読み込み中...</div>
+  <div id="pv-counter">
+    <div class="pv-item">
+      <span class="pv-label">👁 本日</span>
+      <span class="pv-value" id="pv-today">-</span>
+    </div>
+    <span style="opacity:0.4">|</span>
+    <div class="pv-item">
+      <span class="pv-label">累計</span>
+      <span class="pv-value" id="pv-total">-</span>
+    </div>
+  </div>
 </header>
 
 <div id="filter-bar">
@@ -286,6 +318,23 @@
   }
 
   loadData();
+
+  // ページビューカウンター（hits.seeyoufarm.com）
+  // カウントを記録しつつ today / total を取得
+  async function loadPageViews() {
+    const siteUrl = encodeURIComponent('https://afghani420.github.io/hotaruika-watch/');
+    const apiUrl = `https://hits.seeyoufarm.com/api/count/incr/badge.json?url=${siteUrl}`;
+    try {
+      const res = await fetch(apiUrl);
+      const data = await res.json();
+      document.getElementById('pv-today').textContent = Number(data.today).toLocaleString();
+      document.getElementById('pv-total').textContent = Number(data.total).toLocaleString();
+    } catch (e) {
+      document.getElementById('pv-today').textContent = '--';
+      document.getElementById('pv-total').textContent = '--';
+    }
+  }
+  loadPageViews();
 </script>
 </body>
 </html>
