@@ -36,20 +36,82 @@
     }
     header h1 { font-size: 1.2rem; font-weight: 700; letter-spacing: 0.03em; }
     header h1 span { font-size: 1.5rem; }
-    #last-updated {
-      font-size: 0.72rem;
-      opacity: 0.85;
-      margin-top: 4px;
+    #last-updated { font-size: 0.72rem; opacity: 0.85; margin-top: 4px; }
+    #pv-counter { margin-top: 6px; display: flex; justify-content: center; }
+    #pv-counter img { height: 18px; border-radius: 4px; }
+
+    /* ===== 予報ウィジェット ===== */
+    #forecast-section {
+      background: white;
+      border-bottom: 1px solid var(--border);
     }
-    #pv-counter {
-      margin-top: 8px;
+    #forecast-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--primary);
+      padding: 8px 14px 4px;
+    }
+    #forecast-scroll {
       display: flex;
-      justify-content: center;
+      gap: 8px;
+      padding: 0 12px 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
     }
-    #pv-counter img {
-      height: 20px;
-      border-radius: 4px;
+    #forecast-scroll::-webkit-scrollbar { display: none; }
+    .fc-card {
+      flex-shrink: 0;
+      width: 84px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      padding: 8px 6px;
+      text-align: center;
+      background: var(--bg);
+      position: relative;
+      cursor: default;
     }
+    .fc-card.score3 { background: #fff3e0; border-color: #ff9800; }
+    .fc-card.score2 { background: #e8f5e9; border-color: #66bb6a; }
+    .fc-card.today  { box-shadow: 0 0 0 2px var(--primary); }
+    .fc-date   { font-size: 0.7rem; color: var(--muted); }
+    .fc-day    { font-size: 0.78rem; font-weight: 700; margin-bottom: 2px; }
+    .fc-day.sat { color: #1976d2; }
+    .fc-day.sun { color: #e53935; }
+    .fc-weather { font-size: 1.4rem; line-height: 1.2; }
+    .fc-temp   { font-size: 0.68rem; color: #555; margin-top: 1px; }
+    .fc-moon   { font-size: 1rem; margin-top: 3px; }
+    .fc-tide-type {
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 6px;
+      margin-top: 2px;
+      display: inline-block;
+    }
+    .tide-大潮 { background: #fff3e0; color: #e65100; }
+    .tide-中潮 { background: #e3f2fd; color: #1565c0; }
+    .tide-小潮 { background: #f3e5f5; color: #6a1b9a; }
+    .tide-長潮, .tide-若潮 { background: #f5f5f5; color: #555; }
+    .fc-tides  { font-size: 0.6rem; color: #444; margin-top: 3px; line-height: 1.5; }
+    .fc-tides .hw { color: #e65100; font-weight: 700; }
+    .fc-tides .lw { color: #1565c0; }
+    .fc-watch-badge {
+      position: absolute;
+      top: -6px; right: -6px;
+      background: #ff9800;
+      color: white;
+      font-size: 0.6rem;
+      font-weight: 700;
+      border-radius: 10px;
+      padding: 1px 5px;
+    }
+    #forecast-note {
+      font-size: 0.62rem;
+      color: var(--muted);
+      padding: 0 14px 8px;
+    }
+
+    /* ===== フィルター ===== */
     #filter-bar {
       padding: 10px 12px;
       background: white;
@@ -77,6 +139,8 @@
       color: white;
       border-color: var(--primary);
     }
+
+    /* ===== 記事カード ===== */
     #cards {
       padding: 12px;
       display: flex;
@@ -137,6 +201,11 @@
       font-weight: 600;
     }
     .card-date { font-size: 0.72rem; color: var(--muted); }
+    .card-pub-date {
+      font-size: 0.72rem;
+      color: #e65100;
+      font-weight: 600;
+    }
     .card-summary {
       font-size: 0.85rem;
       color: #333;
@@ -180,6 +249,13 @@
   </div>
 </header>
 
+<!-- 天気・潮汐・月齢予報 -->
+<div id="forecast-section" style="display:none">
+  <div id="forecast-title">📍 滑川市（富山）の天気・潮汐・月齢 — 1週間予報</div>
+  <div id="forecast-scroll"></div>
+  <div id="forecast-note">※満潮・干潮は伏木港基準の近似値（±1〜2時間の誤差あり）。🟠=観察好条件</div>
+</div>
+
 <div id="filter-bar">
   <button class="filter-btn active" data-location="">すべて</button>
 </div>
@@ -190,19 +266,22 @@
   <div>該当する情報がありません</div>
 </div>
 
-<footer>自動収集による情報です。最新情報は各リンク先でご確認ください。</footer>
+<footer>自動収集による情報です。最新情報は各リンク先でご確認ください。<br>天気: Open-Meteo / 潮汐: 天文計算（伏木港近似）</footer>
 
 <script>
   let allItems = [];
   let activeLocation = '';
 
   async function loadData() {
-    try {
-      const res = await fetch('data/results.json?t=' + Date.now());
-      allItems = await res.json();
-    } catch (e) {
-      allItems = [];
-    }
+    const [itemsRes, forecastRes] = await Promise.allSettled([
+      fetch('data/results.json?t=' + Date.now()).then(r => r.json()),
+      fetch('data/forecast.json?t=' + Date.now()).then(r => r.json()),
+    ]);
+
+    allItems = itemsRes.status === 'fulfilled' ? itemsRes.value : [];
+    const forecast = forecastRes.status === 'fulfilled' ? forecastRes.value : null;
+
+    renderForecast(forecast);
     renderFilterButtons();
     renderCards();
     updateLastUpdated();
@@ -210,14 +289,58 @@
 
   function updateLastUpdated() {
     const el = document.getElementById('last-updated');
-    if (allItems.length === 0) {
-      el.textContent = 'データなし';
-      return;
-    }
     const latest = allItems[0]?.fetched_at || '';
-    el.textContent = latest ? `最終更新: ${latest}` : '';
+    el.textContent = latest ? `最終更新: ${latest}` : (allItems.length === 0 ? 'データなし' : '');
   }
 
+  // ===== 予報レンダリング =====
+  function renderForecast(forecast) {
+    if (!forecast || !forecast.days || forecast.days.length === 0) return;
+    const section = document.getElementById('forecast-section');
+    const scroll  = document.getElementById('forecast-scroll');
+    section.style.display = 'block';
+    scroll.innerHTML = '';
+
+    const todayStr = new Date().toLocaleDateString('sv-SE'); // YYYY-MM-DD
+
+    forecast.days.forEach(day => {
+      const d = new Date(day.date + 'T12:00:00+09:00');
+      const isToday = day.date === todayStr;
+      const scoreClass = day.watch_score >= 3 ? 'score3' : day.watch_score === 2 ? 'score2' : '';
+      const dayClasses = ['fc-day'];
+      if (d.getDay() === 0) dayClasses.push('sun');
+      else if (d.getDay() === 6) dayClasses.push('sat');
+
+      const tidesHtml = day.tide_times.slice(0, 4).map(t =>
+        `<span class="${t.type === '満潮' ? 'hw' : 'lw'}">${t.type === '満潮' ? '▲' : '▽'}${t.time}</span>`
+      ).join('<br>');
+
+      const morningBadge = day.morning_hw.length > 0
+        ? `<div style="font-size:0.58rem;color:#e65100;font-weight:700;margin-top:2px;">🌊早朝満潮</div>`
+        : '';
+
+      const watchBadge = day.watch_score >= 3
+        ? `<div class="fc-watch-badge">好条件</div>`
+        : '';
+
+      const card = document.createElement('div');
+      card.className = `fc-card ${scoreClass} ${isToday ? 'today' : ''}`.trim();
+      card.innerHTML = `
+        ${watchBadge}
+        <div class="fc-date">${day.date.slice(5).replace('-','/')}</div>
+        <div class="${dayClasses.join(' ')}">${day.weekday}</div>
+        <div class="fc-weather">${day.weather_icon}</div>
+        <div class="fc-temp">${day.temp_max ?? '-'}°/<span style="color:#64b5f6">${day.temp_min ?? '-'}°</span></div>
+        <div class="fc-moon">${day.moon_icon}</div>
+        <span class="fc-tide-type tide-${day.tide_type}">${day.tide_type}</span>
+        <div class="fc-tides">${tidesHtml}</div>
+        ${morningBadge}
+      `;
+      scroll.appendChild(card);
+    });
+  }
+
+  // ===== フィルター =====
   function getLocations() {
     const locs = new Set();
     allItems.forEach(item => { if (item.location) locs.add(item.location); });
@@ -229,7 +352,6 @@
     bar.innerHTML = '';
     const allBtn = document.createElement('button');
     allBtn.className = 'filter-btn' + (activeLocation === '' ? ' active' : '');
-    allBtn.dataset.location = '';
     allBtn.textContent = 'すべて';
     allBtn.onclick = () => setFilter('');
     bar.appendChild(allBtn);
@@ -237,7 +359,6 @@
     getLocations().forEach(loc => {
       const btn = document.createElement('button');
       btn.className = 'filter-btn' + (activeLocation === loc ? ' active' : '');
-      btn.dataset.location = loc;
       btn.textContent = '📍 ' + loc;
       btn.onclick = () => setFilter(loc);
       bar.appendChild(btn);
@@ -250,18 +371,25 @@
     renderCards();
   }
 
+  // ===== 記事カード =====
   function renderCards() {
     const container = document.getElementById('cards');
     const empty = document.getElementById('empty');
-    const items = activeLocation
+    let items = activeLocation
       ? allItems.filter(i => i.location === activeLocation)
       : allItems;
 
+    // published_at がある記事を上に、次いで fetched_at 降順
+    items = [...items].sort((a, b) => {
+      const pa = a.published_at || '', pb = b.published_at || '';
+      if (pa && pb) return pb.localeCompare(pa);
+      if (pa) return -1;
+      if (pb) return 1;
+      return (b.fetched_at || '').localeCompare(a.fetched_at || '');
+    });
+
     container.innerHTML = '';
-    if (items.length === 0) {
-      empty.style.display = 'block';
-      return;
-    }
+    if (items.length === 0) { empty.style.display = 'block'; return; }
     empty.style.display = 'none';
 
     items.forEach(item => {
@@ -269,36 +397,36 @@
       card.className = 'card';
 
       const thumbHtml = item.thumbnail
-        ? `<img class="card-thumb" src="${escHtml(item.thumbnail)}" alt="" loading="lazy" onerror="this.style.display='none'">`
+        ? `<img class="card-thumb" src="${esc(item.thumbnail)}" alt="" loading="lazy" onerror="this.style.display='none'">`
         : `<div class="card-thumb-placeholder">🦑</div>`;
 
       const locHtml = item.location
-        ? `<span class="location-tag">📍 ${escHtml(item.location)}</span>`
+        ? `<span class="location-tag">📍 ${esc(item.location)}</span>`
         : '';
+
+      const dateHtml = item.published_at
+        ? `<span class="card-pub-date">📅 ${esc(item.published_at)}</span>`
+        : `<span class="card-date">🕐 ${esc(item.fetched_at || '')}</span>`;
 
       card.innerHTML = `
         ${thumbHtml}
         <div class="card-body">
-          <div class="card-title">${escHtml(item.title)}</div>
-          <div class="card-meta">
-            ${locHtml}
-            <span class="card-date">🕐 ${escHtml(item.fetched_at || '')}</span>
-          </div>
-          <div class="card-summary">${escHtml(item.summary)}</div>
-          <a class="card-link" href="${escHtml(item.url)}" target="_blank" rel="noopener">記事を見る →</a>
+          <div class="card-title">${esc(item.title)}</div>
+          <div class="card-meta">${locHtml}${dateHtml}</div>
+          <div class="card-summary">${esc(item.summary)}</div>
+          <a class="card-link" href="${esc(item.url)}" target="_blank" rel="noopener">記事を見る →</a>
         </div>
       `;
       container.appendChild(card);
     });
   }
 
-  function escHtml(str) {
+  function esc(str) {
     if (!str) return '';
     return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
   loadData();
-
 </script>
 </body>
 </html>

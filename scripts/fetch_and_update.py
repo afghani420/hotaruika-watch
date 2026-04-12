@@ -76,15 +76,18 @@ def fetch_ogp_image(url: str) -> str | None:
         return None
 
 
-def process_with_claude(title: str, snippet: str, url: str) -> dict | None:
+def process_with_claude(title: str, snippet: str, url: str, serper_date: str = "") -> dict | None:
     """Anthropic APIで記事を処理。除外すべきなら None を返す"""
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
+    today = datetime.now(JST).strftime("%Y-%m-%d")
     prompt = f"""以下の記事情報を分析してください。
 
 タイトル: {title}
 スニペット: {snippet}
 URL: {url}
+検索結果の日付表示: {serper_date or "不明"}
+本日の日付: {today}
 
 判断基準:
 - 「プロ漁師の水揚げ・漁獲量・競り・kg・トン」に関する記事は除外（is_relevant: false）
@@ -95,7 +98,8 @@ URL: {url}
 {{
   "is_relevant": true または false,
   "summary": "100字以内の要約（is_relevant=falseの場合は空文字）",
-  "location": "場所名（〇〇漁港・〇〇海岸・〇〇浜など、不明なら空文字）"
+  "location": "場所名（〇〇漁港・〇〇海岸・〇〇浜など、不明なら空文字）",
+  "published_at": "記事の公開日（YYYY-MM-DD形式。タイトル・スニペット・日付表示から推定。年だけ分かる場合はYYYY-01-01。不明ならnull）"
 }}"""
 
     try:
@@ -163,7 +167,8 @@ def main():
                 continue
 
             logger.info(f"  処理中: {title[:40]}")
-            analysis = process_with_claude(title, snippet, url)
+            serper_date = r.get("date", "")
+            analysis = process_with_claude(title, snippet, url, serper_date)
 
             if not analysis or not analysis.get("is_relevant"):
                 logger.info(f"  除外（AI判定）: {title[:40]}")
@@ -177,6 +182,7 @@ def main():
                 "url": url,
                 "summary": analysis.get("summary", ""),
                 "location": analysis.get("location", ""),
+                "published_at": analysis.get("published_at"),
                 "thumbnail": thumbnail,
                 "fetched_at": datetime.now(JST).strftime("%Y-%m-%d %H:%M JST"),
             }
@@ -187,6 +193,13 @@ def main():
     if new_items:
         combined = new_items + existing
         combined = combined[:MAX_ITEMS]
+        # published_at がある記事を優先して新しい順にソート
+        def sort_key(item):
+            pub = item.get("published_at")
+            if pub:
+                return (0, pub)
+            return (1, item.get("fetched_at", ""))
+        combined.sort(key=sort_key, reverse=True)
         save_results(combined)
         logger.info(f"=== {len(new_items)}件追加、合計{len(combined)}件 ===")
     else:
