@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-12 21:25 JST",
+  "generated_at": "2026-04-12 21:51 JST",
   "location": "富山県滑川市（ホタルイカミュージアム周辺）",
   "note": "満潮・干潮は伏木港基準の近似値（±1〜2時間の誤差あり）",
   "days": [
@@ -88,8 +88,8 @@
     {
       "date": "2026-04-14",
       "weekday": "火",
-      "weather_icon": "⛅",
-      "weather": "薄曇り",
+      "weather_icon": "🌤",
+      "weather": "晴れ",
       "temp_max": 14,
       "temp_min": 9,
       "precip": 0.0,
