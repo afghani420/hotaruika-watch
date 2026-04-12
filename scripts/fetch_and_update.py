@@ -24,6 +24,7 @@ YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", "")
 
 JST = timezone(timedelta(hours=9))
 DATA_FILE = Path(__file__).parent.parent / "data" / "results.json"
+GEOCACHE_FILE = Path(__file__).parent.parent / "data" / "geocache.json"
 MAX_ITEMS = 200
 
 SEARCH_QUERIES = [
@@ -33,6 +34,14 @@ SEARCH_QUERIES = [
     # X（旧Twitter）限定検索
     "site:x.com ホタルイカ 身投げ 新潟 OR 富山",
     "site:x.com ほたるいか 掬い 2025",
+    # Instagram
+    "site:instagram.com ホタルイカ 身投げ OR 掬い",
+    # ブログ
+    "site:note.com ほたるいか 身投げ OR 掬い",
+    "site:ameblo.jp ホタルイカ 身投げ OR 掬い 新潟 OR 富山",
+    "site:hatenablog.com ほたるいか 身投げ OR 掬い",
+    # YouTube
+    "site:youtube.com ほたるいか 身投げ OR 掬い 2025",
 ]
 
 EXCLUDE_KEYWORDS = ["水揚げ", "漁獲量", "競り", "競売", "プロ漁師", "kg", "トン", "卸売"]
@@ -72,6 +81,49 @@ def fetch_youtube_published_at(video_id: str) -> str | None:
     except Exception as e:
         logger.warning(f"YouTube API エラー [{video_id}]: {e}")
         return None
+
+
+def load_geocache() -> dict:
+    if GEOCACHE_FILE.exists():
+        try:
+            return json.loads(GEOCACHE_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            return {}
+    return {}
+
+
+def save_geocache(cache: dict):
+    GEOCACHE_FILE.write_text(json.dumps(cache, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def geocode_location(location: str, cache: dict) -> tuple[float | None, float | None]:
+    """Nominatim APIで場所名を緯度経度に変換（キャッシュ付き）"""
+    if not location:
+        return None, None
+    if location in cache:
+        entry = cache[location]
+        return entry.get("lat"), entry.get("lng")
+    try:
+        import time
+        time.sleep(1.1)  # Nominatim利用規約: 1秒に1リクエスト
+        resp = requests.get(
+            "https://nominatim.openstreetmap.org/search",
+            params={"q": f"{location} 日本", "format": "json", "limit": 1, "countrycodes": "jp"},
+            headers={"User-Agent": "hotaruika-watch/1.0 (github.com/afghani420/hotaruika-watch)"},
+            timeout=10,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        if data:
+            lat = float(data[0]["lat"])
+            lng = float(data[0]["lon"])
+            cache[location] = {"lat": lat, "lng": lng}
+            return lat, lng
+        cache[location] = {"lat": None, "lng": None}
+    except Exception as e:
+        logger.warning(f"ジオコーディング失敗 [{location}]: {e}")
+        cache[location] = {"lat": None, "lng": None}
+    return None, None
 
 
 def search_serper(query: str) -> list[dict]:
@@ -184,6 +236,7 @@ def main():
     logger.info("=== ホタルイカ情報収集開始 ===")
     existing = load_existing()
     existing_urls = {item["url"] for item in existing}
+    geocache = load_geocache()
 
     new_items = []
 
@@ -225,19 +278,26 @@ def main():
                     published_at = yt_date
                     logger.info(f"  YouTube公開日取得: {yt_date}")
 
+            location = analysis.get("location", "")
+            lat, lng = geocode_location(location, geocache)
+
             item = {
                 "id": make_id(url),
                 "title": title,
                 "url": url,
                 "summary": analysis.get("summary", ""),
-                "location": analysis.get("location", ""),
+                "location": location,
+                "lat": lat,
+                "lng": lng,
                 "published_at": published_at,
                 "thumbnail": thumbnail,
                 "fetched_at": datetime.now(JST).strftime("%Y-%m-%d %H:%M JST"),
             }
             new_items.append(item)
             existing_urls.add(url)
-            logger.info(f"  追加: {title[:40]} / {item['location']}")
+            logger.info(f"  追加: {title[:40]} / {location} ({lat},{lng})")
+
+    save_geocache(geocache)
 
     if new_items:
         combined = new_items + existing

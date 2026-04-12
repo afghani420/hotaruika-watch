@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ホタルイカ身投げ・掬い情報掲示板</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
     :root {
       --primary: #1a6eb5;
@@ -237,6 +238,24 @@
       color: var(--muted);
       font-size: 0.75rem;
     }
+
+    /* ===== 地図 ===== */
+    #map-section {
+      background: white;
+      border-bottom: 1px solid var(--border);
+    }
+    #map-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--primary);
+      padding: 8px 14px 4px;
+    }
+    #map {
+      height: 220px;
+      width: 100%;
+    }
+    .leaflet-popup-content { font-size: 0.8rem; max-width: 180px; }
+    .leaflet-popup-content a { color: var(--primary); }
   </style>
 </head>
 <body>
@@ -254,6 +273,12 @@
   <div id="forecast-title">📍 滑川市（富山）の天気・潮汐・月齢 — 1週間予報</div>
   <div id="forecast-scroll"></div>
   <div id="forecast-note">※満潮・干潮は伏木港基準の近似値（±1〜2時間の誤差あり）。🟠=観察好条件</div>
+</div>
+
+<!-- 地図 -->
+<div id="map-section" style="display:none">
+  <div id="map-title">🗺️ 目撃・掬い場所マップ</div>
+  <div id="map"></div>
 </div>
 
 <div id="filter-bar">
@@ -285,6 +310,7 @@
     renderFilterButtons();
     renderCards();
     updateLastUpdated();
+    renderMap(allItems);
   }
 
   function updateLastUpdated() {
@@ -426,7 +452,44 @@
     return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
-  loadData();
+// ===== 地図 =====
+let leafletMap = null;
+
+function renderMap(items) {
+  if (typeof L === 'undefined') return; // Leaflet未ロード時は無視
+  const withCoords = items.filter(i => i.lat && i.lng);
+  const section = document.getElementById('map-section');
+  if (withCoords.length === 0) return;
+  section.style.display = 'block';
+
+  if (!leafletMap) {
+    leafletMap = L.map('map', { zoomControl: true, scrollWheelZoom: false });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      maxZoom: 18,
+    }).addTo(leafletMap);
+  } else {
+    leafletMap.eachLayer(layer => { if (layer instanceof L.Marker) leafletMap.removeLayer(layer); });
+  }
+
+  const bounds = [];
+  withCoords.forEach(item => {
+    const marker = L.marker([item.lat, item.lng]).addTo(leafletMap);
+    marker.bindPopup(
+      `<b>${esc(item.location)}</b><br>` +
+      `${esc((item.summary || '').slice(0, 60))}…<br>` +
+      `<a href="${esc(item.url)}" target="_blank" rel="noopener">記事を見る</a>`
+    );
+    bounds.push([item.lat, item.lng]);
+  });
+
+  if (bounds.length > 0) {
+    leafletMap.fitBounds(bounds, { padding: [20, 20], maxZoom: 12 });
+  }
+}
+
+loadData();
 </script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </body>
 </html>
