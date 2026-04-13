@@ -76,6 +76,42 @@
     "fetched_at": "2026-04-13 08:40 JST"
   },
   {
+    "id": "4a759d75ff37",
+    "title": "【ニュース】 春の訪れを告げる\"富山湾の神秘”「ホタルイカの身投げ」",
+    "url": "https://x.com/News_ABEMA/status/2043602956394913956",
+    "summary": "春の富山湾で見られるホタルイカの身投げという自然現象についてのニュース。観光客が目撃できる神秘的な現象の紹介。",
+    "location": "富山湾",
+    "lat": 36.855161,
+    "lng": 137.2006233,
+    "published_at": "2026-04-14",
+    "thumbnail": null,
+    "fetched_at": "2026-04-14 01:41 JST"
+  },
+  {
+    "id": "d44b69169784",
+    "title": "春の訪れを告げる\"富山湾の神秘”「ホタルイカの身投げ」 @ABEMA ...",
+    "url": "https://x.com/eri_cue/status/2043665358733938945",
+    "summary": "春の富山湾で見られるホタルイカの身投げ現象についてABEMAで配信中の番組。ホタルイカの神秘的な自然現象を紹介するコンテンツ。",
+    "location": "富山湾",
+    "lat": 36.855161,
+    "lng": 137.2006233,
+    "published_at": "2026-04-14",
+    "thumbnail": null,
+    "fetched_at": "2026-04-14 01:41 JST"
+  },
+  {
+    "id": "2ca3fdd2f7de",
+    "title": "富山湾の神秘「ホタルイカの身投げ」 浜辺に漂う青い光を人々が ...",
+    "url": "https://ameblo.jp/4649jado/entry-12962902927.html",
+    "summary": "富山湾でホタルイカの身投げが起こり、浜辺に青く光るホタルイカが漂着。観光客がヘッドライトを持って網でホタルイカをすくい上げる体験をしている。",
+    "location": "富山湾",
+    "lat": 36.855161,
+    "lng": 137.2006233,
+    "published_at": "2026-04-14",
+    "thumbnail": "https://stat.profile.ameba.jp/profile_images/common/noimage_m.gif",
+    "fetched_at": "2026-04-14 01:41 JST"
+  },
+  {
     "id": "760116eefed1",
     "title": "富山湾の神秘「ホタルイカの身投げ」 浜辺に漂う青い光を人々が ...",
     "url": "https://x.com/tv_asahi_news/status/2043612141840990472",
@@ -864,6 +900,18 @@
     "fetched_at": "2026-04-12 23:11 JST"
   },
   {
+    "id": "11f0dc751b42",
+    "title": "富山県、ホタルイカ掬い - YouTube",
+    "url": "https://www.youtube.com/watch?v=fcX7kgbiiYU",
+    "summary": "2025年3月21日、富山県でホタルイカの身投げ時期にホタルイカを掬う体験の様子を記録した動画。新月間近の小潮の時期にホタルイカが活発になる様子が捉えられている。",
+    "location": "富山県",
+    "lat": 36.6468015,
+    "lng": 137.2183531,
+    "published_at": "2025-03-21",
+    "thumbnail": null,
+    "fetched_at": "2026-04-14 01:41 JST"
+  },
+  {
     "id": "0e42d48b4701",
     "title": "富山県内では春の風物詩であるホタルイカの身投げが見られました ...",
     "url": "https://x.com/TBC_houken/status/1903206212059140314",
@@ -906,6 +954,18 @@
     "published_at": "2025-03-16",
     "thumbnail": null,
     "fetched_at": "2026-04-12 22:20 JST"
+  },
+  {
+    "id": "ee81029edd4b",
+    "title": "Testing [Firefly Squid Scooping] Do squid spawn even during a full ...",
+    "url": "https://www.youtube.com/watch?v=NqUCdcjoBUg",
+    "summary": "2025年3月10日～12日、岩瀬浜・打出浜でホタルイカ掬いチャレンジに挑戦。昼間のポイント偵察も含めた2夜連続チャレンジの前半動画。",
+    "location": "岩瀬浜・打出浜",
+    "lat": 34.9333966,
+    "lng": 135.7586426,
+    "published_at": "2025-03-14",
+    "thumbnail": null,
+    "fetched_at": "2026-04-14 01:41 JST"
   },
   {
     "id": "72942db94703",
@@ -1352,6 +1412,18 @@
     "published_at": "2014-06-21",
     "thumbnail": null,
     "fetched_at": "2026-04-12 22:20 JST"
+  },
+  {
+    "id": "7f7e4a98500a",
+    "title": "新潟の上越に初めてホタルイカを捕りに行きたいのですが",
+    "url": "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1060791755",
+    "summary": "新潟県上越地域の親不知漁港でホタルイカ掬いを試みた個人の体験記。気象条件や地形的要因でホタルイカが捕れない理由を質問している。",
+    "location": "親不知漁港",
+    "lat": 34.9333966,
+    "lng": 135.7586426,
+    "published_at": "2011-04-24",
+    "thumbnail": "https://s.yimg.jp/images/ks/clap/image/ogp/ogp.png",
+    "fetched_at": "2026-04-14 01:41 JST"
   },
   {
     "id": "0135b1f0440e",
