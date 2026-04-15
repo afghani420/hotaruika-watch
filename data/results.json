@@ -1,5 +1,17 @@
 [
   {
+    "id": "7f13505f56c7",
+    "title": "富山湾 ホタルイカ 捕らんまいけ〜ぇ ?",
+    "url": "https://rara.jp/hotaruika-toyama/",
+    "summary": "富山湾でのホタルイカ掬いや身投げ体験に関する情報交換掲示板。初心者向けのポイント解説も提供。",
+    "location": "富山湾",
+    "lat": 36.855161,
+    "lng": 137.2006233,
+    "published_at": null,
+    "thumbnail": null,
+    "fetched_at": "2026-04-16 00:55 JST"
+  },
+  {
     "id": "2e2965b5771a",
     "title": "かっぽ@RockShoreCompany (@kappon_world) / Posts / X",
     "url": "https://x.com/kappon_world",
@@ -358,6 +370,18 @@
     "published_at": "2026-04-07",
     "thumbnail": null,
     "fetched_at": "2026-04-14 16:12 JST"
+  },
+  {
+    "id": "eb6ccace1f3c",
+    "title": "ホタルイカの身投げを見に真夜中に富山湾へ。結局一匹も見つけ ...",
+    "url": "https://www.instagram.com/p/DWufhdCkw3e/",
+    "summary": "富山湾でホタルイカ掬いに挑戦したが、今年も見つけられなかった体験記。立山連峰の景色を見ながら来年のリベンジを誓う個人の観光体験。",
+    "location": "富山湾",
+    "lat": 36.855161,
+    "lng": 137.2006233,
+    "published_at": "2026-04-04",
+    "thumbnail": null,
+    "fetched_at": "2026-04-16 00:55 JST"
   },
   {
     "id": "a45f2bdb9620",
@@ -1352,6 +1376,18 @@
     "published_at": "2024-05-06",
     "thumbnail": null,
     "fetched_at": "2026-04-13 20:57 JST"
+  },
+  {
+    "id": "210b9503b30f",
+    "title": "富山で体験！ホタルイカすくいの時期・場所・コツ完全ガイド",
+    "url": "https://tsurigood.com/firefly-squid/",
+    "summary": "富山でホタルイカすくいを体験できるスポット7選を紹介。四方漁港、八重津浜海水浴場、浜黒崎海岸など観光客向けの掬い体験スポットの時期・場所・コツを解説したガイド。",
+    "location": "四方漁港、八重津浜海水浴場、浜黒崎海岸、海老江・本江海岸線、朝日町海岸線、国分浜海水浴場、岩瀬浜海水浴場、魚津",
+    "lat": null,
+    "lng": null,
+    "published_at": "2024-04-10",
+    "thumbnail": "https://tsurigood.com/wp-content/uploads/2025/02/165-1.jpg",
+    "fetched_at": "2026-04-16 00:55 JST"
   },
   {
     "id": "8cd044edc552",
