@@ -1,5 +1,17 @@
 [
   {
+    "id": "eacbb9eed171",
+    "title": "\"#ホタルイカ\" - Results on X | Live Posts & Updates",
+    "url": "https://x.com/search?q=%23%E3%83%9B%E3%82%BF%E3%83%AB%E3%82%A4%E3%82%AB",
+    "summary": "北陸新幹線の終電で急遽2人を呼んで、ホタルイカ704匹を捕まえて茹でて食べた個人の体験情報。",
+    "location": "北陸地域（詳細不明）",
+    "lat": 34.6827801,
+    "lng": 135.829486,
+    "published_at": null,
+    "thumbnail": null,
+    "fetched_at": "2026-04-19 08:54 JST"
+  },
+  {
     "id": "022c21d5546b",
     "title": "saito (@atomu0808) / Posts / X",
     "url": "https://x.com/atomu0808",
@@ -100,6 +112,18 @@
     "fetched_at": "2026-04-12 22:20 JST"
   },
   {
+    "id": "ca14baec9c54",
+    "title": "ホタルイカ掬いを楽しむ人々… みんな色んなとこから来てるんだ ...",
+    "url": "https://www.instagram.com/reel/DXSS85eEjlb/",
+    "summary": "富山湾沿岸でホタルイカの身投げシーズンに、観光客や一般人が胴長を着てタモ網で掬う体験の様子。多くの人々が集まる春の風物詩。",
+    "location": "富山湾沿岸",
+    "lat": 35.042311,
+    "lng": 135.779432,
+    "published_at": "2026-04-19",
+    "thumbnail": null,
+    "fetched_at": "2026-04-19 08:55 JST"
+  },
+  {
     "id": "6809a861429f",
     "title": "富山県民たるものホタルイカ掬いはデフォルト案件   てなわけで ...",
     "url": "https://www.instagram.com/p/DXQnwfGk5gz/",
@@ -122,6 +146,18 @@
     "published_at": "2026-04-19",
     "thumbnail": null,
     "fetched_at": "2026-04-13 08:40 JST"
+  },
+  {
+    "id": "35e0027d7d39",
+    "title": "ホタルイカの「身投げ」求めて大勢の人 新月に現れる",
+    "url": "https://news.yahoo.co.jp/articles/c7e89b2ef60e3ea3ae8c09cb531c97a4f5abee82",
+    "summary": "ホタルイカの身投げは産卵のため深海から浮上したホタルイカが浜に打ち上げられる現象で、新月の前後に多く見られる。多くの人が この現象を求めて訪れている。",
+    "location": "",
+    "lat": null,
+    "lng": null,
+    "published_at": "2026-04-18",
+    "thumbnail": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20260418-09725887-knb-000-3-thumb.jpg?exp=10800",
+    "fetched_at": "2026-04-19 08:54 JST"
   },
   {
     "id": "f0136f0db690",
@@ -1980,6 +2016,18 @@
     "published_at": "2018-04-27",
     "thumbnail": "https://cdn.image.st-hatena.com/image/scale/bd679fc08c86cedc20bb21d01248e2097f418a49/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fa%2Fawajitakota%2F20180427%2F20180427204955.jpg",
     "fetched_at": "2026-04-12 22:20 JST"
+  },
+  {
+    "id": "5cd2b5f3cfde",
+    "title": "一斉に光ります。 これを「ホタルイカの身投げ」と呼び、富山の ...",
+    "url": "https://x.com/543life/status/854891141380153344",
+    "summary": "富山の春の風物詩「ホタルイカの身投げ」。波打ち際に打ち上げられたホタルイカが一斉に光る現象を観賞する体験情報。",
+    "location": "富山県",
+    "lat": 36.6468015,
+    "lng": 137.2183531,
+    "published_at": "2017-04-20",
+    "thumbnail": null,
+    "fetched_at": "2026-04-19 08:54 JST"
   },
   {
     "id": "c0aefce8ea4a",
