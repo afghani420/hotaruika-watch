@@ -124,6 +124,18 @@
     "fetched_at": "2026-04-12 22:20 JST"
   },
   {
+    "id": "5e39d0ba8321",
+    "title": "2026 ホタルイカ掬い~富山にイン",
+    "url": "https://ameblo.jp/5-kaisen/entry-12963416144.html",
+    "summary": "個人がホタルイカの身投げ前に掬う体験活動。富山県でのホタルイカ掬い体験に関する記事。去年の体験との比較も記載。",
+    "location": "富山県",
+    "lat": 36.6468015,
+    "lng": 137.2183531,
+    "published_at": "2026-04-23",
+    "thumbnail": "https://stat.ameba.jp/user_images/20260422/21/5-kaisen/2d/12/j/o1080081215774229807.jpg",
+    "fetched_at": "2026-04-23 04:57 JST"
+  },
+  {
     "id": "906abe14d46e",
     "title": "捕まえた! #ホタルイカ #ホタルイカの身投げ #ホタルイカ掬い",
     "url": "https://www.instagram.com/reel/DXaB3Ptk5G7/",
@@ -2306,23 +2318,15 @@
     "fetched_at": "2026-04-17 09:03 JST"
   },
   {
-    "id": "2ccd3c7b0dbf",
-    "title": "ホタルイカの身投げ - ヒスイ海岸の口コミ - トリップアドバイザー",
-    "url": "https://www.tripadvisor.jp/ShowUserReviews-g1021359-d3342985-r362727899-Hisui_Beach-Itoigawa_Niigata_Prefecture_Koshinetsu_Chubu.html",
-    "summary": "子供と夜間にホタルイカ拾いを体験。漆黒の闇に光る青いイカが幻想的で、新月前後の満潮時に人が少なくゆったり楽しめたという観光客の口コミ。",
-    "location": "ヒスイ海岸",
-    "published_at": "2016-04-01",
+    "id": "0135b1f0440e",
+    "title": "姫川港ホタルイカすくい",
+    "url": "https://www.tokai-dc.com/syumisenzan/outdoor/hotaruika080502-03.htm",
+    "summary": "姫川港でホタルイカを掬う体験について。砂浜で獲れたホタルイカは砂を噛んでいるため、港での掬いを選択した個人の体験記。",
+    "location": "姫川港",
+    "lat": 35.0025082,
+    "lng": 138.4253118,
+    "published_at": "2008-05-02",
     "thumbnail": null,
-    "fetched_at": "2026-04-12 23:11 JST"
-  },
-  {
-    "id": "89ee3f865b63",
-    "title": "新潟県で釣れたホタルイカの釣り・釣果情報 - アングラーズ",
-    "url": "https://anglers.jp/prefectures/15/fishes/109",
-    "summary": "新潟県のホタルイカ釣り場情報。姫川河口、富山湾、佐渡島での釣果報告を掲載。個人アングラーによる釣り体験情報。",
-    "location": "姫川河口、富山湾、佐渡島",
-    "published_at": "2014-06-21",
-    "thumbnail": null,
-    "fetched_at": "2026-04-12 22:20 JST"
+    "fetched_at": "2026-04-23 04:56 JST"
   }
 ]
