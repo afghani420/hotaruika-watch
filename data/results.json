@@ -1974,6 +1974,18 @@
     "fetched_at": "2026-04-12 22:20 JST"
   },
   {
+    "id": "f9eda4bd5e58",
+    "title": "み か ど (@Litvyak501_MKD) / Posts / X",
+    "url": "https://x.com/Litvyak501_MKD",
+    "summary": "個人がホタルイカ掬いの体験をしている観光客。2025年の北海道旅行中にホタルイカ掬いの場所を訪れて実際に掬う体験をしたという記事。",
+    "location": "北海道（具体的な場所は不明）",
+    "lat": null,
+    "lng": null,
+    "published_at": "2025-01-01",
+    "thumbnail": null,
+    "fetched_at": "2026-04-24 02:03 JST"
+  },
+  {
     "id": "4a4130fee790",
     "title": "2025富山県🏔️ 今年もホタルイカ掬い楽しかった！ 25杯   ぐっすり ...",
     "url": "https://x.com/pocamp_pochan/status/1916244828125597866",
@@ -2298,39 +2310,27 @@
     "fetched_at": "2026-04-23 20:44 JST"
   },
   {
-    "id": "ae8773886007",
-    "title": "GW前半“ヒスイ拾い”改め\"ホタルイカ掬い\"",
-    "url": "https://midorinsan.hatenablog.com/entry/2019/04/30/000231",
-    "summary": "GW前半にホタルイカ掬いを体験した記事。身投げは多くなかったが、青い発光が見られて感動したとのこと。",
-    "location": "",
-    "lat": null,
-    "lng": null,
-    "published_at": "2019-04-30",
-    "thumbnail": "https://cdn.image.st-hatena.com/image/scale/9c8a63dde851c2b13bdff4a0f06bc99c58839a77/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fm%2Fmidorinsan%2F20190430%2F20190430001547.jpg",
-    "fetched_at": "2026-04-23 20:44 JST"
+    "id": "c0aefce8ea4a",
+    "title": "初心者でもチャンスあり！ 親子連れで楽しめる富山湾のホタルイカ ...",
+    "url": "https://tabiyasumi.hatenablog.com/entry/2017/03/21/223512",
+    "summary": "富山湾で毎年見られるホタルイカの身投げという自然現象を狙った掬い体験。初心者でも親子連れで楽しめる観光活動として紹介されている。",
+    "location": "富山湾",
+    "lat": 36.855161,
+    "lng": 137.2006233,
+    "published_at": "2017-03-21",
+    "thumbnail": "https://cdn.image.st-hatena.com/image/scale/c37c4f57454739cc7513dc2f0a7b127bc86ffffa/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2FM%2FMossanJP%2F20170321%2F20170321222805.jpg",
+    "fetched_at": "2026-04-24 02:03 JST"
   },
   {
-    "id": "d6793a740293",
-    "title": "「ホタルイカの身投げ」を撮って後悔している話｜大木賢 - note",
-    "url": "https://note.com/kenohki/n/n223a66ecb5b8",
-    "summary": "著者がホタルイカの身投げ現象を撮影した体験について記述。ホタルイカが産卵のため浅瀬に上がり死に至る自然現象を目撃し、その様子を記録したことへの後悔の念を述べている。",
-    "location": "",
-    "lat": null,
-    "lng": null,
-    "published_at": "2018-07-02",
-    "thumbnail": "https://assets.st-note.com/production/uploads/images/7028920/rectangle_large_type_2_5fbde5f3a23bd0854b845683c4723dd1.jpg?fit=bounds&quality=85&width=1280",
-    "fetched_at": "2026-04-23 20:44 JST"
-  },
-  {
-    "id": "7f7e4a98500a",
-    "title": "新潟の上越に初めてホタルイカを捕りに行きたいのですが",
-    "url": "https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1060791755",
-    "summary": "新潟県上越地域でホタルイカを掬う体験をしたいという個人の質問。姫川港での採集情報と現在の釣り禁止状況について相談している。",
+    "id": "0135b1f0440e",
+    "title": "姫川港ホタルイカすくい",
+    "url": "https://www.tokai-dc.com/syumisenzan/outdoor/hotaruika080502-03.htm",
+    "summary": "姫川港でホタルイカを掬う体験についての記事。砂浜での採集と港での採集の違いについて、現地の人物からのアドバイスを交えて紹介している。",
     "location": "姫川港",
     "lat": 35.0025082,
     "lng": 138.4253118,
-    "published_at": "2011-04-24",
-    "thumbnail": "https://s.yimg.jp/images/ks/clap/image/ogp/ogp.png",
-    "fetched_at": "2026-04-23 20:43 JST"
+    "published_at": "2008-05-02",
+    "thumbnail": null,
+    "fetched_at": "2026-04-24 02:03 JST"
   }
 ]
