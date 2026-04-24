@@ -172,6 +172,18 @@
     "fetched_at": "2026-04-23 00:58 JST"
   },
   {
+    "id": "5340b5a141c5",
+    "title": "路上駐車にたき火…「ホタルイカの身投げ」に大勢の人 問われる ...",
+    "url": "https://news.yahoo.co.jp/articles/32216d73b0ac77d3e78a75a3a4513d6c330fe656",
+    "summary": "富山市の浜で新月前後に起こるホタルイカの身投げ現象が発生し、多くの人がホタルイカを捕まえるために集まった。路上駐車やたき火など問題も発生している。",
+    "location": "富山市の浜",
+    "lat": 35.515592,
+    "lng": 137.8352827,
+    "published_at": "2026-04-22",
+    "thumbnail": "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20260422-01815338-knb-000-2-thumb.jpg?exp=10800",
+    "fetched_at": "2026-04-24 09:11 JST"
+  },
+  {
     "id": "df276b2ec193",
     "title": "福井 ホタルイカ 身投げ - TikTok",
     "url": "https://www.tiktok.com/discover/%E7%A6%8F%E4%BA%95%E3%80%80%E3%83%9B%E3%82%BF%E3%83%AB%E3%82%A4%E3%82%AB%E3%80%80%E8%BA%AB%E6%8A%95%E3%81%92",
@@ -592,6 +604,18 @@
     "fetched_at": "2026-04-15 07:33 JST"
   },
   {
+    "id": "1194874e24d2",
+    "title": "春の富山で - こいしゆうかさんのキャンプ旅と簡単パスタ - FUNQ",
+    "url": "https://www.funq.jp/?p=1057648",
+    "summary": "富山でのキャンプ旅を題材に、海岸に打ち上げられたホタルイカを漁業権なしで誰でも掬える体験情報を紹介した記事。簡単パスタなどの料理も含む。",
+    "location": "富山県",
+    "lat": 36.6468015,
+    "lng": 137.2183531,
+    "published_at": "2026-04-14",
+    "thumbnail": "https://cdn.funq.jp/contents/uploads/2026/03/25092006/01__NKT0688.jpg",
+    "fetched_at": "2026-04-24 09:11 JST"
+  },
+  {
     "id": "e37bd99f81cd",
     "title": "「人の気配しかしない」深夜の砂浜 “ホタルイカ身投げ” 爆沸き予報 ...",
     "url": "https://newsdig.tbs.co.jp/articles/tut/2608039?display=1",
@@ -862,6 +886,18 @@
     "published_at": "2026-04-09",
     "thumbnail": null,
     "fetched_at": "2026-04-12 22:21 JST"
+  },
+  {
+    "id": "5c331ef4c060",
+    "title": "【体験談】初心者でも出来る富山県八重津浜ホタルイカすくいの ...",
+    "url": "https://irupen.com/beginner_firefly_squid_toyama_yaezu/",
+    "summary": "富山県八重津浜でのホタルイカすくい体験ガイド。初心者向けの掬い方や、電車でアクセス可能な岩瀬浜海岸も紹介している観光体験記事。",
+    "location": "八重津浜、岩瀬浜海岸",
+    "lat": null,
+    "lng": null,
+    "published_at": "2026-04-08",
+    "thumbnail": "https://irupen.com/wp-content/uploads/2025/04/スクリーンショット-2025-04-20-13.28.31-e1745141551690.png",
+    "fetched_at": "2026-04-24 09:11 JST"
   },
   {
     "id": "d045ef29b2a2",
@@ -1244,6 +1280,18 @@
     "published_at": "2026-03-15",
     "thumbnail": null,
     "fetched_at": "2026-04-13 08:40 JST"
+  },
+  {
+    "id": "a1a209870314",
+    "title": "【初心者向け】ホタルイカ掬い完全ガイド｜富山湾での取り方 ...",
+    "url": "https://www.sp-hiross.com/entry/hotaruika",
+    "summary": "富山湾でのホタルイカ掬いの初心者向けガイド。護岸から集魚灯を使う方法と浜から立ち込んで掬う方法、必要な道具、安全注意事項を解説。",
+    "location": "富山湾",
+    "lat": 36.855161,
+    "lng": 137.2006233,
+    "published_at": "2026-03-14",
+    "thumbnail": "https://cdn.image.st-hatena.com/image/scale/1103854a9082bc39fdcbc7eb17eddc49d22f9341/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fs%2Fstormfish%2F20260314%2F20260314181010.jpg",
+    "fetched_at": "2026-04-24 09:10 JST"
   },
   {
     "id": "0c3775f16778",
@@ -2236,103 +2284,63 @@
     "fetched_at": "2026-04-12 22:20 JST"
   },
   {
-    "id": "670f9bf8ae7d",
-    "title": "ホタルイカ掬い！富山市でプチ湧き  【2023.3.21】",
-    "url": "https://kojichanc.hatenablog.com/entry/2023/03/21/201445",
-    "summary": "富山市でホタルイカの掬い体験ができた記事。3月〜5月が身投げの時期で、新月や気温などの条件が重要であることが説明されている。",
-    "location": "富山市",
-    "lat": 36.6957569,
-    "lng": 137.2136215,
-    "published_at": "2023-03-21",
-    "thumbnail": "https://cdn.image.st-hatena.com/image/scale/60b27c07376a69f7d7726920abfd24c4b4edb32a/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fk%2Fkojichanc%2F20230321%2F20230321165729.jpg",
-    "fetched_at": "2026-04-13 08:42 JST"
+    "id": "35a52669b6ee",
+    "title": "ホタルイカ身投げシーズン開幕！ | 釣りするげん～海が好きっ！～",
+    "url": "https://ameblo.jp/gs50p/entry-12729854824.html",
+    "summary": "富山県でホタルイカの身投げシーズンが開幕。産卵のため浅瀬にやってきたホタルイカが砂浜に打ち上がる現象を観察できる体験情報。",
+    "location": "富山県",
+    "lat": 36.6468015,
+    "lng": 137.2183531,
+    "published_at": "2022-03-02",
+    "thumbnail": "https://stat.ameba.jp/user_images/20220303/13/gs50p/b7/be/j/o1024102415082560987.jpg",
+    "fetched_at": "2026-04-24 09:11 JST"
   },
   {
-    "id": "5cdda0b78797",
-    "title": "【佐渡】【新潟】ホタルイカの「身投げ」？波打ち際に ... - YouTube",
-    "url": "https://www.youtube.com/watch?v=B9rNBgTqDyE",
-    "summary": "2023年3月18日、佐渡市の海岸に産卵のため接近したホタルイカが大量に打ち上げられているのが発見された。自然現象としてのホタルイカの身投げの様子を記録した映像。",
-    "location": "佐渡市の海岸",
-    "published_at": "2023-03-20",
+    "id": "ea6b970b743f",
+    "title": "ちょっと富山までホタルイカを掬いに - ワンゲル部の記録長さん",
+    "url": "https://uccari8.hatenablog.com/entry/2021/04/12/004406",
+    "summary": "ワンゲル部がホタルイカ掬いに富山湾へ訪れた体験記。毎年3月～GWの時期に深夜帯で見られるホタルイカの身投げ現象を狙った掬い体験で、成功率が低い大人の磯遊びイベントとして記録している。",
+    "location": "富山湾",
+    "lat": 36.855161,
+    "lng": 137.2006233,
+    "published_at": "2021-04-12",
+    "thumbnail": "https://cdn.image.st-hatena.com/image/scale/95bbf1fbfa14eca2c2ba7c1ebe3ea0f6aecf498d/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fu%2Fuccari8%2F20210411%2F20210411173723.jpg",
+    "fetched_at": "2026-04-24 09:11 JST"
+  },
+  {
+    "id": "4a21bb6a24a9",
+    "title": "満を持してのホタルイカ掬い(富山湾 伏木国分浜) - いも工房",
+    "url": "https://imoengineering.hatenablog.com/entry/2020/03/26/032636",
+    "summary": "富山湾の伏木国分浜でホタルイカ掬いを体験した個人の記録。1時間40分間の掬い活動の様子と採獲量について記述している。",
+    "location": "富山湾 伏木国分浜",
+    "lat": 33.4287832,
+    "lng": 134.0128796,
+    "published_at": "2020-03-26",
+    "thumbnail": "https://cdn.image.st-hatena.com/image/scale/2b72bd298a2720f85ebb28b224c80e7fa6ded6d4/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fi%2Fimoengineering%2F20200326%2F20200326031148.jpg",
+    "fetched_at": "2026-04-24 09:11 JST"
+  },
+  {
+    "id": "c0aefce8ea4a",
+    "title": "初心者でもチャンスあり！ 親子連れで楽しめる富山湾のホタルイカ ...",
+    "url": "https://tabiyasumi.hatenablog.com/entry/2017/03/21/223512",
+    "summary": "富山湾で毎年見られるホタルイカの身投げという自然現象を狙った掬い体験。初心者や親子連れでも楽しめる観光体験について紹介している。",
+    "location": "富山湾",
+    "lat": 36.855161,
+    "lng": 137.2006233,
+    "published_at": "2017-03-21",
+    "thumbnail": "https://cdn.image.st-hatena.com/image/scale/c37c4f57454739cc7513dc2f0a7b127bc86ffffa/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2FM%2FMossanJP%2F20170321%2F20170321222805.jpg",
+    "fetched_at": "2026-04-24 09:11 JST"
+  },
+  {
+    "id": "0135b1f0440e",
+    "title": "姫川港ホタルイカすくい",
+    "url": "https://www.tokai-dc.com/syumisenzan/outdoor/hotaruika080502-03.htm",
+    "summary": "姫川港でホタルイカを掬う体験。砂浜ではなく港での掬いについて、プロ漁師の助言に基づいて紹介している観光体験記事。",
+    "location": "姫川港",
+    "lat": 35.0025082,
+    "lng": 138.4253118,
+    "published_at": "2008-05-02",
     "thumbnail": null,
-    "fetched_at": "2026-04-12 22:20 JST"
-  },
-  {
-    "id": "406c59b1f1cf",
-    "title": "海岸に大量のホタルイカ “ホタルイカの身投げ”現象か【新潟・佐渡市】",
-    "url": "https://newsdig.tbs.co.jp/articles/-/386083",
-    "summary": "新潟県佐渡市の海岸に大量のホタルイカが打ち上げられる現象が発生。ホタルイカの身投げ現象の可能性がある。",
-    "location": "新潟県佐渡市の海岸",
-    "lat": null,
-    "lng": null,
-    "published_at": "2023-03-19",
-    "thumbnail": "https://newsdig.ismcdn.jp/mwimgs/2/7/1200w/img_27e6938a1b683a91d2cf03cb40c92915267266.jpg",
-    "fetched_at": "2026-04-23 07:34 JST"
-  },
-  {
-    "id": "b2f424932dc7",
-    "title": "海岸に大量のホタルイカ “ホタルイカの身投げ”現象か【新潟・佐渡市】",
-    "url": "https://newsdig.tbs.co.jp/articles/bsn/386083",
-    "summary": "新潟県佐渡市の海岸に大量のホタルイカが打ち上げられているのが見つかった。ホタルイカの身投げ現象と考えられている。",
-    "location": "新潟県佐渡市海岸",
-    "lat": null,
-    "lng": null,
-    "published_at": "2023-03-19",
-    "thumbnail": "https://newsdig.ismcdn.jp/mwimgs/2/7/1200w/img_27e6938a1b683a91d2cf03cb40c92915267266.jpg",
-    "fetched_at": "2026-04-22 08:53 JST"
-  },
-  {
-    "id": "2faea4696b0e",
-    "title": "海岸に大量のホタルイカ 地元も驚き「珍しい…」魚の群れに追われ ...",
-    "url": "https://www.youtube.com/watch?v=-xjHXVFi3CA",
-    "summary": "佐渡市の海岸に大量のホタルイカが打ち上がった。地元住民も珍しいと驚き、魚の群れに追われたか身投げが原因か、詳しい理由は不明。",
-    "location": "佐渡市",
-    "published_at": "2023-03-19",
-    "thumbnail": null,
-    "fetched_at": "2026-04-12 22:20 JST"
-  },
-  {
-    "id": "2697e2444cb8",
-    "title": "【佐渡市】「ホタルイカの身投げ」大量のホタルイカが海岸に ...",
-    "url": "https://www.youtube.com/watch?v=XH_d3DgD6z4",
-    "summary": "佐渡市の海岸に大量のホタルイカが打ち上げられる「身投げ」現象が発生し、住民が持ち帰る様子を捉えた動画。個人による採集体験の情報。",
-    "location": "佐渡市の海岸",
-    "published_at": "2023-03-18",
-    "thumbnail": null,
-    "fetched_at": "2026-04-13 02:54 JST"
-  },
-  {
-    "id": "4bdcc233793d",
-    "title": "【ホタルイカの身投げ現象】海岸に大量のホタルイカ 新潟・佐渡市",
-    "url": "https://www.youtube.com/watch?v=B6AJMo5tGmo",
-    "summary": "新潟県佐渡市の海岸に大量のホタルイカが打ち上げられる「身投げ」現象が発生。自然現象として観察できる現象。",
-    "location": "新潟県佐渡市の海岸",
-    "published_at": "2023-03-18",
-    "thumbnail": null,
-    "fetched_at": "2026-04-12 22:20 JST"
-  },
-  {
-    "id": "ae8773886007",
-    "title": "GW前半“ヒスイ拾い”改め\"ホタルイカ掬い\"",
-    "url": "https://midorinsan.hatenablog.com/entry/2019/04/30/000231",
-    "summary": "GW前半にホタルイカ掬い体験をした記事。身投げは少なかったが、青い発光が見られて感動したとの体験記。",
-    "location": "",
-    "lat": null,
-    "lng": null,
-    "published_at": "2019-04-30",
-    "thumbnail": "https://cdn.image.st-hatena.com/image/scale/9c8a63dde851c2b13bdff4a0f06bc99c58839a77/backend=imagemagick;version=1;width=1300/https%3A%2F%2Fcdn-ak.f.st-hatena.com%2Fimages%2Ffotolife%2Fm%2Fmidorinsan%2F20190430%2F20190430001547.jpg",
-    "fetched_at": "2026-04-24 06:08 JST"
-  },
-  {
-    "id": "d6793a740293",
-    "title": "「ホタルイカの身投げ」を撮って後悔している話｜大木賢 - note",
-    "url": "https://note.com/kenohki/n/n223a66ecb5b8",
-    "summary": "著者がホタルイカの身投げ現象を撮影した体験について、その自然現象に対する複雑な感情と後悔の念を綴った個人的な記事。",
-    "location": "",
-    "lat": null,
-    "lng": null,
-    "published_at": "2018-07-02",
-    "thumbnail": "https://assets.st-note.com/production/uploads/images/7028920/rectangle_large_type_2_5fbde5f3a23bd0854b845683c4723dd1.jpg?fit=bounds&quality=85&width=1280",
-    "fetched_at": "2026-04-24 06:08 JST"
+    "fetched_at": "2026-04-24 09:10 JST"
   }
 ]
