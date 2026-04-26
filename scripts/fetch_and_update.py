@@ -18,7 +18,7 @@ import anthropic
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
 
-SERPER_API_KEY = os.environ["SERPER_API_KEY"]
+BRAVE_API_KEY = os.environ["BRAVE_API_KEY"]
 ANTHROPIC_API_KEY = os.environ["ANTHROPIC_API_KEY"]
 YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", "")
 
@@ -126,20 +126,19 @@ def geocode_location(location: str, cache: dict) -> tuple[float | None, float | 
     return None, None
 
 
-def search_serper(query: str) -> list[dict]:
-    """Serper APIで検索してorganic resultsを返す"""
+def search_brave(query: str) -> list[dict]:
+    """Brave Search APIで検索してweb resultsを返す"""
     try:
-        resp = requests.post(
-            "https://google.serper.dev/search",
-            headers={"X-API-KEY": SERPER_API_KEY, "Content-Type": "application/json"},
-            json={"q": query, "gl": "jp", "hl": "ja", "num": 10},
+        resp = requests.get(
+            "https://api.search.brave.com/res/v1/web/search",
+            headers={"X-Subscription-Token": BRAVE_API_KEY, "Accept": "application/json"},
+            params={"q": query, "count": 20, "country": "jp", "search_lang": "ja"},
             timeout=15,
         )
         resp.raise_for_status()
-        data = resp.json()
-        return data.get("organic", [])
+        return resp.json().get("web", {}).get("results", [])
     except Exception as e:
-        logger.error(f"Serper検索エラー [{query}]: {e}")
+        logger.error(f"Brave検索エラー [{query}]: {e}")
         return []
 
 
@@ -242,13 +241,13 @@ def main():
 
     for query in SEARCH_QUERIES:
         logger.info(f"検索中: {query}")
-        results = search_serper(query)
+        results = search_brave(query)
         logger.info(f"  {len(results)}件ヒット")
 
         for r in results:
-            url = r.get("link", "")
+            url = r.get("url", "")
             title = r.get("title", "")
-            snippet = r.get("snippet", "")
+            snippet = r.get("description", "")
 
             if not url or url in existing_urls:
                 continue
@@ -260,7 +259,7 @@ def main():
                 continue
 
             logger.info(f"  処理中: {title[:40]}")
-            serper_date = r.get("date", "")
+            serper_date = r.get("page_age", "")
             analysis = process_with_claude(title, snippet, url, serper_date)
 
             if not analysis or not analysis.get("is_relevant"):
