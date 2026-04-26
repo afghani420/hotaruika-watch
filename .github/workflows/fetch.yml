@@ -2,7 +2,7 @@ name: Fetch Hotaruika Info
 
 on:
   schedule:
-    - cron: '0 */2 * * *'
+    - cron: '0 */2 * 2-4 *'  # February-April only
   workflow_dispatch:
 
 concurrency:
