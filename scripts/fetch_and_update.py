@@ -136,7 +136,7 @@ def search_brave(query: str) -> list[dict]:
                 "Accept": "application/json",
                 "Accept-Encoding": "gzip",
             },
-            params={"q": query, "count": 20, "country": "JP", "search_lang": "ja"},
+            params={"q": query, "count": 20, "country": "JP", "search_lang": "jp"},
             timeout=15,
         )
         resp.raise_for_status()
