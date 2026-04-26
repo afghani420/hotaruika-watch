@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#1a1a1a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Ali Multi-Search</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf8f5;
+    --ink: #1a1a1a;
+    --ink-soft: #5a5a5a;
+    --line: #e8e4dd;
+    --accent: #e62e04;
+    --accent-soft: #fef0ec;
+    --jp: #1a1a1a;
+    --en: #2563eb;
+    --zh: #dc2626;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html, body { background: var(--bg); color: var(--ink); }
+  body {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    min-height: 100vh;
+    padding: 20px 16px 80px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .meta {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+  }
+
+  .search-box {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 4px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: stretch;
+  }
+  #q {
+    flex: 1;
+    border: 0;
+    outline: 0;
+    padding: 14px 12px;
+    font-family: inherit;
+    font-size: 16px;
+    background: transparent;
+    color: var(--ink);
+  }
+  #q::placeholder { color: #b5b0a6; }
+  #go {
+    border: 0;
+    background: var(--ink);
+    color: white;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 0 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+  }
+  #go:disabled { opacity: 0.4; }
+  #go:active { transform: scale(0.97); }
+
+  .sort {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 24px;
+    font-size: 11px;
+  }
+  .sort button {
+    flex: 1;
+    border: 1px solid var(--line);
+    background: transparent;
+    padding: 10px 8px;
+    border-radius: 2px;
+    font-family: inherit;
+    color: var(--ink-soft);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .sort button.on {
+    background: var(--ink);
+    color: white;
+    border-color: var(--ink);
+  }
+
+  .results { display: flex; flex-direction: column; gap: 12px; }
+  .card {
+    background: white;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--lang-color, var(--ink));
+    padding: 14px 16px;
+    border-radius: 2px;
+    animation: slide 0.4s ease both;
+  }
+  .card[data-lang="ja"] { --lang-color: var(--jp); }
+  .card[data-lang="en"] { --lang-color: var(--en); }
+  .card[data-lang="zh"] { --lang-color: var(--zh); }
+  .card:nth-child(2) { animation-delay: 0.08s; }
+  .card:nth-child(3) { animation-delay: 0.16s; }
+  @keyframes slide {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .tag {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--lang-color);
+    font-weight: 600;
+  }
+  .copy {
+    font-size: 10px;
+    color: var(--ink-soft);
+    background: none;
+    border: 1px solid var(--line);
+    padding: 4px 8px;
+    border-radius: 2px;
+    font-family: inherit;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .copy.done { background: var(--ink); color: white; border-color: var(--ink); }
+
+  .text {
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    line-height: 1.3;
+    margin-bottom: 14px;
+    word-break: break-word;
+    color: var(--ink);
+  }
+  .card[data-lang="ja"] .text,
+  .card[data-lang="zh"] .text {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+    font-weight: 600;
+  }
+
+  .open {
+    display: block;
+    text-align: center;
+    background: var(--accent);
+    color: white;
+    padding: 12px;
+    border-radius: 2px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+  }
+  .open:active { background: #b8240a; }
+
+  .status {
+    text-align: center;
+    padding: 24px;
+    color: var(--ink-soft);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .status.err { color: var(--accent); }
+
+  .history {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+  .history-head {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .hist-list { display: flex; flex-direction: column; gap: 4px; }
+  .hist-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    font-size: 13px;
+  }
+  .hist-text { flex: 1; cursor: pointer; }
+  .hist-del {
+    background: none;
+    border: 0;
+    color: #c0bbb1;
+    font-size: 18px;
+    padding: 0 4px;
+    cursor: pointer;
+  }
+  .hist-empty { font-size: 11px; color: #b5b0a6; padding: 4px 0; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Ali<em>·</em>Multi</h1>
+    <div class="meta">JP / EN / ZH</div>
+  </header>
+
+  <div class="search-box">
+    <input id="q" type="text" placeholder="日本語で入力…" autocomplete="off">
+    <button id="go">SEARCH</button>
+  </div>
+
+  <div class="sort" id="sort">
+    <button class="on" data-s="price_asc">最安値</button>
+    <button data-s="total_tranpro_desc">注文数</button>
+    <button data-s="default">標準</button>
+  </div>
+
+  <div class="results" id="res"></div>
+
+  <div class="history">
+    <div class="history-head">— 履歴</div>
+    <div class="hist-list" id="hist"></div>
+  </div>
+
+<script>
+  const $ = s => document.querySelector(s);
+  const ALI = 'https://www.aliexpress.com/wholesale?SearchText=';
+  let sort = 'price_asc';
+  let history = [];
+  try { history = JSON.parse(localStorage.getItem('ali_hist') || '[]'); } catch(e) {}
+
+  // sort buttons
+  $('#sort').addEventListener('click', e => {
+    if (e.target.tagName !== 'BUTTON') return;
+    document.querySelectorAll('#sort button').forEach(b => b.classList.remove('on'));
+    e.target.classList.add('on');
+    sort = e.target.dataset.s;
+  });
+
+  $('#go').addEventListener('click', run);
+  $('#q').addEventListener('keypress', e => { if (e.key === 'Enter') run(); });
+
+  async function translate(text, target) {
+    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=ja|${target}`;
+    const r = await fetch(url);
+    const d = await r.json();
+    if (!d.responseData) throw new Error('translate fail');
+    return d.responseData.translatedText;
+  }
+
+  function aliUrl(keyword) {
+    const u = ALI + encodeURIComponent(keyword);
+    return sort === 'default' ? u : u + '&SortType=' + sort;
+  }
+
+  function card(lang, label, text) {
+    const url = aliUrl(text);
+    const safe = text.replace(/"/g, '&quot;');
+    return `
+      <div class="card" data-lang="${lang}">
+        <div class="card-head">
+          <span class="tag">${label}</span>
+          <button class="copy" data-t="${safe}">COPY</button>
+        </div>
+        <div class="text">${text}</div>
+        <a class="open" href="${url}" target="_blank" rel="noopener">→ AliExpressで開く</a>
+      </div>
+    `;
+  }
+
+  async function run() {
+    const v = $('#q').value.trim();
+    if (!v) return;
+
+    const btn = $('#go');
+    const res = $('#res');
+    btn.disabled = true;
+    btn.textContent = '...';
+    res.innerHTML = '<div class="status">翻訳中</div>';
+
+    try {
+      const [en, zh] = await Promise.all([
+        translate(v, 'en'),
+        translate(v, 'zh-CN')
+      ]);
+      res.innerHTML = card('ja', 'Japanese · 原文', v)
+                    + card('en', 'English', en)
+                    + card('zh', '简体中文', zh);
+      addHist(v);
+      bindCopy();
+    } catch (err) {
+      res.innerHTML = '<div class="status err">翻訳に失敗しました</div>';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'SEARCH';
+    }
+  }
+
+  function bindCopy() {
+    document.querySelectorAll('.copy').forEach(b => {
+      b.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(b.dataset.t);
+          b.textContent = 'COPIED';
+          b.classList.add('done');
+          setTimeout(() => { b.textContent = 'COPY'; b.classList.remove('done'); }, 1200);
+        } catch(e) {}
+      });
+    });
+  }
+
+  function addHist(k) {
+    history = [k, ...history.filter(h => h !== k)].slice(0, 12);
+    try { localStorage.setItem('ali_hist', JSON.stringify(history)); } catch(e) {}
+    renderHist();
+  }
+
+  function renderHist() {
+    const list = $('#hist');
+    if (!history.length) {
+      list.innerHTML = '<div class="hist-empty">履歴はありません</div>';
+      return;
+    }
+    list.innerHTML = history.map((h, i) => `
+      <div class="hist-item">
+        <span class="hist-text" data-i="${i}">${h}</span>
+        <button class="hist-del" data-d="${i}">×</button>
+      </div>
+    `).join('');
+    list.querySelectorAll('.hist-text').forEach(el => {
+      el.addEventListener('click', () => {
+        $('#q').value = history[+el.dataset.i];
+        run();
+      });
+    });
+    list.querySelectorAll('.hist-del').forEach(el => {
+      el.addEventListener('click', () => {
+        history.splice(+el.dataset.d, 1);
+        try { localStorage.setItem('ali_hist', JSON.stringify(history)); } catch(e) {}
+        renderHist();
+      });
+    });
+  }
+
+  renderHist();
+</script>
+</body>
+</html>
