@@ -287,8 +287,8 @@
   }
 
   function aliUrl(keyword) {
-    const u = ALI + encodeURIComponent(keyword);
-    return sort === 'default' ? u : u + '&SortType=' + sort;
+    const u = ALI + encodeURIComponent(keyword) + '&page=1&g=y';
+    return sort === 'default' ? u : u + '&sortBy=' + sort;
   }
 
   function card(lang, label, text) {
