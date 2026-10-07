@@ -199,11 +199,13 @@ URL: {url}
 
     try:
         message = client.messages.create(
-            model="claude-haiku-4-5-20251001",
-            max_tokens=256,
+            model="claude-haiku-5-5",  # 2026-10-08: haiku-4-5-20251001→haiku-5-5
+            max_tokens=1024,  # thinking 分を含む（Haiku 5.5 は既定で adaptive thinking）
+            output_config={"effort": "low"},  # 分類タスク＝思考は最小
             messages=[{"role": "user", "content": prompt}],
         )
-        text = message.content[0].text.strip()
+        # thinking ブロックが先頭に来うるため type で text ブロックを選ぶ
+        text = next((b.text for b in message.content if b.type == "text"), "").strip()
         # JSONブロックを抽出
         if "```" in text:
             text = text.split("```")[1]

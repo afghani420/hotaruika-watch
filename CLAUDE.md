@@ -7,7 +7,7 @@
 - ホスティング: GitHub Pages
 - 自動実行: GitHub Actions（2時間毎）
 - 検索API: Serper.dev
-- AI処理: Anthropic API（claude-haiku-4-5）
+- AI処理: Anthropic API（claude-haiku-5-5・2026-10-08 haiku-4-5 から更新・effort low）
 - データ: `data/results.json`（最大200件、新着順）
 
 ## ファイル構成
